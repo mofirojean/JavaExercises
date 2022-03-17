@@ -1,37 +1,43 @@
-import java.text.CharacterIterator;
-import java.text.StringCharacterIterator;
-import java.util.Scanner;
+import java.util.Locale;
 
 public class Exercise08 {
-    // Exercise R - 1.8
+    // Exercise R-1.8
+    // the java program counts the number of vowel sound in a word
     /**
      * A java method the counts the number of vowels
      * in a given character string
      */
     public static void main(String[] args){
-        // taking input of string
-        Scanner input = new Scanner(System.in);
+        String line = "hello world 3223 nigerian school";
+        int vowels = 0, consonants = 0, digits = 0, space = 0; // initializing the value of the vowel
 
-        System.out.print("Enter a word: ");
-        String word = input.next();
-    }
+        // creating a loop to iterate through the text
+        line = line.toLowerCase(); // convert the text to lower case
+        for (int i = 0; i < line.length(); ++i){
+            char ch = line.charAt(i);  // converts the string into a character type
 
-    // using the String.toCharArray()
-
-    /**
-     * first we convert the string into an array of character
-     * using String.toCharArray() method
-     * then you iterate through  the character
-     */
-    static void iterateString(String word){
-        // converting the string into an array of characters
-        char[] arrChar = word.toCharArray();
-
-        // travers the character array
-        for (int i = 0; i < arrChar.length; i++){
-
+            // using an if condition to select the vowel
+            if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u'){
+                vowels++;
+            }
+            // check if character is between a to z
+            else if (ch >= 'a' && ch <= 'z'){
+                consonants++;
+            }
+            // check if character is between 0 to 9
+            else if (ch >= '0' && ch <= '9'){
+                digits++;
+            }
+            // check if the character is a space
+            else if (ch == ' '){
+                space++;
+            }
         }
+        // print number of vowels
+        System.out.println("Vowels: " + vowels);
+        System.out.println("Consonants: " + consonants);
+        System.out.println("Digits: " + digits);
+        System.out.println("Spaces: " + space);
 
     }
-
 }
